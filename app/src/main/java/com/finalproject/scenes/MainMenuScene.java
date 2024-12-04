@@ -1,8 +1,8 @@
 package com.finalproject.scenes;
 
 import java.awt.BorderLayout;
+import javax.swing.Timer;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -55,7 +55,13 @@ public class MainMenuScene implements Scene{
 
     private void startGame() {
         client.setScene(new NightScene(1));
+        
+        Timer timer = new Timer(3000, e -> exitGame());
+        
+        client.setScene(new GameScene());
 
+
+        
     }
     
     private void continueGame(){}
