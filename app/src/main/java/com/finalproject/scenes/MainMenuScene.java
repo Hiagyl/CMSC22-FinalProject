@@ -3,6 +3,7 @@ package com.finalproject.scenes;
 import java.awt.BorderLayout;
 import javax.swing.Timer;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -11,6 +12,7 @@ import com.finalproject.core.GamePanel;
 
 public class MainMenuScene implements Scene{
     private GameClient client;
+    private JFrame window;
     private JPanel menuPanel;
     private JPanel westPanel;
     private JPanel buttonsPanel;
@@ -19,24 +21,24 @@ public class MainMenuScene implements Scene{
     private JButton continueButton;
     private JButton exitButton;
 
-    public MainMenuScene(GameClient client) {
+    public MainMenuScene(GameClient client, JFrame window) {
         this.client = client;
+        this.window = window;
         menuPanel = new GamePanel(new BorderLayout(), true);
         westPanel = new GamePanel(new BorderLayout(), true);
         buttonsPanel = new GamePanel();
 
-        title = new JLabel("FNAF");
+        title = new JLabel("Nightshift");
+        //TODO: ADD LOGO INSTEAD OF TEXT
+        //TODO: DESIGN MAIN MENU
 
         startButton = new JButton("Start");
-        // startButton.setActionCommand("Start");
         startButton.addActionListener(e -> startGame());
 
         continueButton = new JButton("Continue");
-        // continueButton.setActionCommand("Continue");
         continueButton.addActionListener(e -> continueGame());
 
         exitButton = new JButton("Exit");
-        exitButton.setActionCommand("Exit");
         exitButton.addActionListener(e -> exitGame());
 
         buttonsPanel.add(startButton);
@@ -56,15 +58,16 @@ public class MainMenuScene implements Scene{
     private void startGame() {
         client.setScene(new NightScene(1));
         
-        Timer timer = new Timer(3000, e -> exitGame());
+        Timer timer = new Timer(3000, e -> client.setScene(new GameScene(client, window)));
+        timer.start();
         
-        client.setScene(new GameScene());
-
-
-        
+        // client.setScene(new GameScene(client, window));
     }
     
-    private void continueGame(){}
+    private void continueGame() {
+    
+        //TODO: Add function that updates the night, ai level, etc
+    }
 
     private void exitGame() {
         System.exit(0);

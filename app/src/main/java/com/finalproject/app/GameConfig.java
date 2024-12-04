@@ -19,5 +19,6 @@ public class GameConfig {
         // gameWindow.setVisible(true);
 
         GameClient client = new GameClient(gameWindow);
+        
     }
 }
