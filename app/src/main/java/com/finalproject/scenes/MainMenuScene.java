@@ -7,10 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import com.finalproject.app.GameClient;
+import com.finalproject.core.GameController;
 import com.finalproject.core.GamePanel;
 import com.finalproject.core.GameState;
+import com.finalproject.models.Robot;
 
 public class MainMenuScene implements Scene{
     private GameClient client;
@@ -22,13 +23,21 @@ public class MainMenuScene implements Scene{
     private JButton startButton;
     private JButton continueButton;
     private JButton exitButton;
-    private ActionListener controller;
+    private GameController controller;
+    private Robot leftRobot;
+    private Robot rightRobot;
+    private Robot centerRobot;
+    
 
 
-    public MainMenuScene(GameClient client, JFrame window, ActionListener controller) {
+    public MainMenuScene(GameClient client, JFrame window, ActionListener controller, Robot leftRobot, Robot rightRobot, Robot centerRobot) {
         this.client = client;
         this.window = window;
-        this.controller = controller;
+        this.controller = (GameController) controller;
+        this.leftRobot = leftRobot;
+        this.rightRobot = rightRobot;
+        this.centerRobot = centerRobot;
+
         menuPanel = new GamePanel(new BorderLayout(), true);
         westPanel = new GamePanel(new BorderLayout(), true);
         buttonsPanel = new GamePanel();
@@ -69,7 +78,7 @@ public class MainMenuScene implements Scene{
         client.setScene(new NightScene(GameState.getCurrentLevel()));
 
         // Thread 
-        Timer timer = new Timer(3000, e -> client.setScene(new GameScene(client, window, controller)));
+        Timer timer = new Timer(3000, e -> client.setScene(new GameScene(client, window, controller, leftRobot, rightRobot, centerRobot)));
         timer.setRepeats(false);
         timer.start();
     }

@@ -3,19 +3,21 @@ package com.finalproject.app;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import com.finalproject.scenes.Scene;
+import com.finalproject.models.Robot;
 import com.finalproject.scenes.MainMenuScene;
 
 public class GameClient {
     private JFrame frame;
     private Scene currentScene;
+    
     // private ActionListener controller;
 
-    public GameClient(JFrame frame, ActionListener controller) {
+    public GameClient(JFrame frame, ActionListener controller, Robot leftRobot, Robot rightRobot, Robot centerRobot) {
         // Set up the main game window
         this.frame = frame;
 
         // Initialize the first scene (e.g., MenuScene)
-        setScene(new MainMenuScene(this, frame, controller));
+        setScene(new MainMenuScene(this, frame, controller, leftRobot, rightRobot, centerRobot));
         frame.setVisible(true);
     }
 

@@ -32,7 +32,7 @@ public class RightRobot extends Robot implements Movable {
             this.setCurrentPath(2); // Move to path(2)
             attack(); // Call attack method
         }
-        System.out.println("Right robot moved to path " + this.getCurrentPath());
+        System.out.println("Right robot moved to path " + getPath(this.getCurrentPath()));
     }
 
     @Override
@@ -56,6 +56,7 @@ public class RightRobot extends Robot implements Movable {
     public void startThread() {
         new Thread(() -> {
             while (running) {
+                System.out.println("Right robot is running...");
                 try {
                     Thread.sleep(8000); // Wait for 8 seconds
                 } catch (InterruptedException e) {

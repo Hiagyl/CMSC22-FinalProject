@@ -17,6 +17,7 @@ public class CenterRobot extends Robot {
     public void startThread() {
         new Thread(() -> {
             while (running) {
+                System.out.println("Center robot is transferring rooms...");
                 try {
                     Thread.sleep(25000); // Wait for 25 seconds
                 } catch (InterruptedException e) {

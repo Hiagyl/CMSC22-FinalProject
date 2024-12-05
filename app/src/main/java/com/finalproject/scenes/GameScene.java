@@ -9,16 +9,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.event.ActionListener;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 import com.finalproject.app.GameClient;
+import com.finalproject.core.GameController;
 import com.finalproject.core.Time;
+import com.finalproject.models.Robot;
 
 public class GameScene implements Scene {
-    // private JFrame window;
-    // private GameClient client;
     private JPanel gamePanel;
     private JLabel time;
     private Time timeThread;
@@ -40,8 +40,10 @@ public class GameScene implements Scene {
     private int leftLightButtonX = 100;
     private int antivirusButtonX = 100;
 
-    public GameScene(GameClient client, JFrame window, ActionListener controller) {
+    public GameScene(GameClient client, JFrame window, GameController controller, Robot leftRobot, Robot rightRobot,
+            Robot centerRobot) {
 
+        controller.setGameScene(this);
         gamePanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -75,7 +77,12 @@ public class GameScene implements Scene {
         gamePanel.add(time);
         timeThread = new Time(time, client);
         Thread thread1 = new Thread(timeThread);
-        thread1.start();   
+        thread1.start();
+        
+        
+        leftRobot.startThread();
+        rightRobot.startThread();
+        centerRobot.startThread();
 
         computerButton = new JButton("Computer");
         computerButton.setActionCommand("Computer");
@@ -165,7 +172,7 @@ public class GameScene implements Scene {
             gamePanel.repaint();
         }
 
-        System.out.println("backgroundX: " + backgroundX + " minScrollX: " + minScrollX + " maxScrollX: " + maxScrollX);
+        // System.out.println("backgroundX: " + backgroundX + " minScrollX: " + minScrollX + " maxScrollX: " + maxScrollX);
     }
 
     private void updateButtonPositions() {

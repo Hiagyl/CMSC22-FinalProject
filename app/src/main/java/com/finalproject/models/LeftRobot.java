@@ -31,7 +31,7 @@ public class LeftRobot extends Robot implements Movable {
             this.setCurrentPath(2); // Move to path(2)
             attack(); // Call attack method
         }
-        System.out.println("Left robot moved to path " + this.getCurrentPath());
+        System.out.println("Left robot moved to path " + getPath(this.getCurrentPath()));
     }
 
     public void attack() {
@@ -54,6 +54,8 @@ public class LeftRobot extends Robot implements Movable {
     public void startThread() {
         new Thread(() -> {
             while (running) {
+
+                System.out.println("Left robot is transferring rooms...");
                 try {
                     Thread.sleep(5000); // Wait for 5 seconds
                 } catch (InterruptedException e) {

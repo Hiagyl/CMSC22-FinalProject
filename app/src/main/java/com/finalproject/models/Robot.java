@@ -17,8 +17,8 @@ public abstract class Robot {
         this(null, level);
     }
     
-    public String getPath(){
-        return path.toString(); 
+    public String getPath(int n){
+        return path.get(n); 
     }
     
     public int getCurrentPath() {
