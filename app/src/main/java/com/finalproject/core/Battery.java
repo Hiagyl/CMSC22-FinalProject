@@ -54,17 +54,11 @@ public class Battery implements Runnable {
             if (!GameState.isLeftDoorOpen()) {
                 depletionRate += 0.5;
             }
-            if (GameState.isRightLightOn()) {
-                depletionRate += 0.3;
-            }
-            if (GameState.isLeftLightOn()) {
-                depletionRate += 0.3;
-            }
             if (GameState.isControlShocked()) {
                 depletionRate += 0.2;
             }
             if(GameState.isCameraOn()){
-                depletionRate += 0.7;
+                depletionRate += 0.6;
             }
 
             // Deplete battery

@@ -1,5 +1,6 @@
 package com.finalproject.scenes;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -83,6 +84,7 @@ public class GameScene implements Scene {
 
         time = new JLabel("Time: 0");
         time.setBounds(100, 0, 100, 50);
+        time.setForeground(Color.WHITE);
         gamePanel.add(time);
         timeThread = new Time(time, client, menu, this);
         Thread thread1 = new Thread(timeThread);
@@ -90,6 +92,7 @@ public class GameScene implements Scene {
         
         battery = new JLabel("Battery: 100%");
         battery.setBounds(200, 0, 100, 50);
+        battery.setForeground(Color.WHITE);
         gamePanel.add(battery);
         batteryThread = Battery.getInstance(battery);
         Thread thread2 = new Thread(batteryThread);
