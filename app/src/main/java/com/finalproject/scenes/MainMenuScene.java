@@ -37,7 +37,8 @@ public class MainMenuScene implements Scene{
     
 
 
-    public MainMenuScene(GameClient client, JFrame window, ActionListener controller, Robot leftRobot, Robot rightRobot, Robot centerRobot) {
+    public MainMenuScene(GameClient client, JFrame window, ActionListener controller, Robot leftRobot, Robot rightRobot,
+            Robot centerRobot) {
         this.client = client;
         this.window = window;
         this.controller = (GameController) controller;
@@ -52,22 +53,21 @@ public class MainMenuScene implements Scene{
         buttonsPanel.setBackground(Color.BLACK);
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.Y_AXIS));
         buttonsPanel.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-        
 
         title = new JLabel("Night Shift");
         title.setFont(new Font("Arial", Font.BOLD, 76));
         title.setForeground(Color.WHITE);
         title.setHorizontalAlignment(SwingConstants.LEFT);
 
-        startButton = new JButton("Start");
+        startButton = createButton("Start");
         startButton.addActionListener(e -> startGame());
         startButton.setFocusable(false);
 
-        continueButton = new JButton("Continue");
+        continueButton = createButton("Continue");
         continueButton.addActionListener(e -> continueGame());
         continueButton.setFocusable(false);
 
-        exitButton = new JButton("Exit");
+        exitButton = createButton("Exit");
         exitButton.addActionListener(e -> exitGame());
         exitButton.setFocusable(false);
 
@@ -85,7 +85,19 @@ public class MainMenuScene implements Scene{
         buttonsPanel.setVisible(true);
         // westPanel.setVisible(true);
         menuPanel.setVisible(true);
-    } 
+    }
+
+    private JButton createButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.BOLD, 36));
+        button.setForeground(Color.WHITE);
+        button.setBackground(Color.BLACK);
+        button.setFocusPainted(false);
+        button.setFocusable(false);
+        button.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+        button.setAlignmentX(JButton.LEFT_ALIGNMENT);
+        return button;
+    }
 
     private void startGame() {
         GameState.setCurrentLevel(1);
