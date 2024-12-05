@@ -5,7 +5,7 @@ import java.util.Random;
 
 import javax.swing.Timer;
 
-import com.finalproject.app.GameClient;
+// import com.finalproject.app.GameClient;
 import com.finalproject.core.GameState;
 import com.finalproject.scenes.GameOverScene;
 

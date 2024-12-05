@@ -11,6 +11,8 @@ public class GameState {
     private static boolean isControlShocked;
     private static boolean isGameOver;
     private static boolean isNightSurvived;
+    private static boolean isCameraOn;
+
 
     // Private constructor to prevent instantiation
     // private GameState(int currentLevel) {
@@ -88,13 +90,12 @@ public class GameState {
         GameState.currentLevel = currentLevel;
     }
 
-    public static void reset() {
-        GameState.isRightDoorOpen = true;
-        GameState.isLeftDoorOpen = true;
-        GameState.isRightLightOn = false;
-        GameState.isLeftLightOn = false;
-        GameState.isControlShocked = false;
-        GameState.isGameOver = false;
-        GameState.isNightSurvived = false;
+    public static boolean isCameraOn() {
+        return isCameraOn;
     }
+
+    public static void setCameraOn(boolean isCameraOn) {
+        GameState.isCameraOn = isCameraOn;
+    }
+
 }

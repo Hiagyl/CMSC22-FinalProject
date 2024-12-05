@@ -22,15 +22,15 @@ import com.finalproject.models.Robot;
 public class GameScene implements Scene {
     private JPanel gamePanel;
     private JLabel time;
-    private MainMenuScene menu;
+    // private MainMenuScene menu;
     private JLabel battery;
     private Time timeThread;
     private Battery batteryThread;
     private JButton computerButton;
     private JButton rightDoorButton;
     private JButton leftDoorButton;
-    private JButton rightLightButton;
-    private JButton leftLightButton;
+    // private JButton rightLightButton;
+    // private JButton leftLightButton;
     private JButton shockButton;
     private Image backgroundImage;
     private Robot leftRobot;
@@ -41,16 +41,16 @@ public class GameScene implements Scene {
     private int scrollSpeed = 20; // Speed of scrolling
 
     // Store initial button positions
-    private int computerButtonX = 100;
-    private int rightDoorButtonX = 100;
-    private int leftDoorButtonX = 200;
-    private int rightLightButtonX = 100;
-    private int leftLightButtonX = 100;
-    private int shockButtonX = 100;
+    private int computerButtonX = 800;
+    private int rightDoorButtonX = 1300;
+    private int leftDoorButtonX = 100;
+    // private int rightLightButtonX = 100;
+    // private int leftLightButtonX = 100;
+    private int shockButtonX = 600;
 
     public GameScene(GameClient client, JFrame window, GameController controller, Robot leftRobot, Robot rightRobot,
             Robot centerRobot, MainMenuScene menu) {
-        this.menu = menu;
+        // this.menu = menu;
 
         controller.setGameScene(this);
         gamePanel = new JPanel() {
@@ -60,7 +60,7 @@ public class GameScene implements Scene {
                 drawBackground(g); // Draw the background
             }
         };
-
+        gamePanel.setLayout(null);
         // Initialize background position
         backgroundX = 0;
 
@@ -105,21 +105,21 @@ public class GameScene implements Scene {
         computerButton = new JButton("Computer");
         computerButton.setActionCommand("Computer");
         computerButton.setPreferredSize(new Dimension(100, 50));
-        computerButton.setBounds(computerButtonX, 100, 100, 50);
+        computerButton.setBounds(computerButtonX, 600, 100, 50);
         computerButton.addActionListener(controller);
         gamePanel.add(computerButton);
 
         rightDoorButton = new JButton("Right Door");
         rightDoorButton.setActionCommand("Right Door");
         rightDoorButton.setPreferredSize(new Dimension(100, 50));
-        rightDoorButton.setBounds(rightDoorButtonX, 200, 100, 50);
+        rightDoorButton.setBounds(rightDoorButtonX, 50, 100, 50);
         rightDoorButton.addActionListener(controller);
         gamePanel.add(rightDoorButton);
 
         leftDoorButton = new JButton("Left Door");
         leftDoorButton.setActionCommand("Left Door");
         leftDoorButton.setPreferredSize(new Dimension(100, 50));
-        leftDoorButton.setBounds(leftDoorButtonX, 300, 100, 50);
+        leftDoorButton.setBounds(leftDoorButtonX, 50, 100, 50);
         leftDoorButton.addActionListener(controller);
         gamePanel.add(leftDoorButton);
 
@@ -194,11 +194,9 @@ public class GameScene implements Scene {
     }
 
     private void updateButtonPositions() {
-        computerButton.setBounds(computerButtonX + backgroundX, 100, 100, 50);
-        rightDoorButton.setBounds(rightDoorButtonX + backgroundX, 200, 100, 50);
-        leftDoorButton.setBounds(leftDoorButtonX + backgroundX, 300, 100, 50);
-        // rightLightButton.setBounds(rightLightButtonX + backgroundX, 400, 100, 50);
-        // leftLightButton.setBounds(leftLightButtonX + backgroundX, 500, 100, 50);
+        computerButton.setBounds(computerButtonX + backgroundX, 600, 100, 50);
+        rightDoorButton.setBounds(rightDoorButtonX + backgroundX, 50, 100, 50);
+        leftDoorButton.setBounds(leftDoorButtonX + backgroundX, 50, 100, 50);
         shockButton.setBounds(shockButtonX + backgroundX, 600, 100, 50);
     }
 

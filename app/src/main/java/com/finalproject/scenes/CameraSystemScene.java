@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import com.finalproject.app.GameClient;
+import com.finalproject.core.GameState;
 import com.finalproject.models.CenterRobot;
 import com.finalproject.models.Robot;
 
@@ -144,6 +145,7 @@ public class CameraSystemScene implements Scene {
     }
 
     public void exitCamera() {
+        GameState.setCameraOn(false);
         client.setScene(gameScene);
     }
 

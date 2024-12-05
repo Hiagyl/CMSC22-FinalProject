@@ -2,7 +2,7 @@ package com.finalproject.models;
 
 import javax.swing.Timer;
 
-import com.finalproject.app.GameClient;
+// import com.finalproject.app.GameClient;
 import com.finalproject.core.GameState;
 import com.finalproject.scenes.GameOverScene;
 
@@ -23,7 +23,7 @@ public class CenterRobot extends Robot {
             while (running) {
                 System.out.println("Center robot is transferring rooms...");
                 try {
-                    Thread.sleep(4000); // Wait for 25 seconds
+                    Thread.sleep(25000); // Wait for 25 seconds
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -45,7 +45,7 @@ public class CenterRobot extends Robot {
     public void attack() {
         try {
             // Wait for 10 seconds before attacking
-            Thread.sleep(10000);
+            Thread.sleep(15000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

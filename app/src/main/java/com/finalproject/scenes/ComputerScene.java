@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import com.finalproject.app.GameClient;
 import com.finalproject.core.GamePanel;
+import com.finalproject.core.GameState;
 import com.finalproject.models.Robot;
 
 public class ComputerScene implements Scene {
@@ -71,6 +72,7 @@ public class ComputerScene implements Scene {
     // }
 
     public void exitComputer() {
+        GameState.setCameraOn(false);
         client.setScene(gameScene);
     }
 

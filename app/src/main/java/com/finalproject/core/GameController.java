@@ -36,6 +36,7 @@ public class GameController implements ActionListener {
         switch (command) {
             case "Computer":
                 System.out.println("Computer");
+                GameState.setCameraOn(true);
                 client.setScene(new ComputerScene(client, leftRobot, rightRobot, centerRobot, gameScene));
 
                 break;

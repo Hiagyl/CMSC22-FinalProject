@@ -63,6 +63,9 @@ public class Battery implements Runnable {
             if (GameState.isControlShocked()) {
                 depletionRate += 0.2;
             }
+            if(GameState.isCameraOn()){
+                depletionRate += 0.7;
+            }
 
             // Deplete battery
             batteryLevel -= depletionRate;

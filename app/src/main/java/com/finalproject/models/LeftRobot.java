@@ -1,6 +1,6 @@
 package com.finalproject.models;
 
-import com.finalproject.app.GameClient;
+// import com.finalproject.app.GameClient;
 import com.finalproject.core.GameState;
 import com.finalproject.scenes.GameOverScene;
 

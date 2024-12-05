@@ -13,7 +13,7 @@ public class Time implements Runnable{
     private int time;
     private JLabel label;
     private GameClient client;
-    private MainMenuScene menu;
+    // private MainMenuScene menu;
     private boolean running;
     private GameScene gameScene;
 
@@ -22,7 +22,7 @@ public class Time implements Runnable{
         this.label = label;
         this.label.setText("12:00 AM");
         this.client = client;
-        this.menu = menu;
+        // this.menu = menu;
         this.running = true;
         this.gameScene = gameScene;
     }
@@ -48,7 +48,6 @@ public class Time implements Runnable{
                     System.out.println("You survived the night!");
 
                     client.setScene(new WinScene());
-                    GameState.reset();
                     Timer timer = new Timer(3000, e -> System.exit(0));
                     timer.setRepeats(false);
                     timer.start();
