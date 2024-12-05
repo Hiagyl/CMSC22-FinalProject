@@ -3,22 +3,19 @@ package com.finalproject.app;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import com.finalproject.scenes.Scene;
-import com.finalproject.core.GameState;
 import com.finalproject.scenes.MainMenuScene;
 
 public class GameClient {
     private JFrame frame;
-    private GameState state;
     private Scene currentScene;
     // private ActionListener controller;
 
-    public GameClient(JFrame frame, ActionListener controller, GameState state) {
+    public GameClient(JFrame frame, ActionListener controller) {
         // Set up the main game window
         this.frame = frame;
-        this.state = state;
 
         // Initialize the first scene (e.g., MenuScene)
-        setScene(new MainMenuScene(this, frame, controller, state));
+        setScene(new MainMenuScene(this, frame, controller));
         frame.setVisible(true);
     }
 

@@ -1,88 +1,98 @@
 package com.finalproject.core;
 
 public class GameState {
-    private static GameState instance;
-
-    private int currentLevel;
-    private boolean isRightDoorOpen;
-    private boolean isLeftDoorOpen;
-    private boolean isRightLightOn;
-    private boolean isLeftLightOn;
-    private boolean isGameOver;
-    private boolean isNightSurvived;
+    private static int currentLevel;
+    private static boolean isRightDoorOpen;
+    private static boolean isLeftDoorOpen;
+    private static boolean isRightLightOn;
+    private static boolean isLeftLightOn;
+    private static boolean isControlShocked;
+    private static boolean isGameOver;
+    private static boolean isNightSurvived;
 
     // Private constructor to prevent instantiation
     private GameState(int currentLevel) {
-        this.currentLevel = currentLevel;
-        this.isRightDoorOpen = false;
-        this.isLeftDoorOpen = false;
-        this.isRightLightOn = false;
-        this.isLeftLightOn = false;
-        this.isGameOver = false;
-        this.isNightSurvived = false;
+        GameState.currentLevel = currentLevel;
+        GameState.isRightDoorOpen = false;
+        GameState.isLeftDoorOpen = false;
+        GameState.isRightLightOn = false;
+        GameState.isLeftLightOn = false;
+        GameState.isControlShocked = false;
+        GameState.isGameOver = false;
+        GameState.isNightSurvived = false;
     }
 
-    // Public method to provide access to the single instance
-    public static GameState getInstance(int currentLevel) {
-        if (instance == null) {
-            instance = new GameState(currentLevel);
-        }
-        return instance;
-    }
-
-    public boolean isRightDoorOpen() {
+    public static boolean isRightDoorOpen() {
         return isRightDoorOpen;
     }
 
-    public void setRightDoorOpen(boolean isRightDoorOpen) {
-        this.isRightDoorOpen = isRightDoorOpen;
+    public static void setRightDoorOpen(boolean isRightDoorOpen) {
+        GameState.isRightDoorOpen = isRightDoorOpen;
     }
 
-    public boolean isLeftDoorOpen() {
+    public static boolean isLeftDoorOpen() {
         return isLeftDoorOpen;
     }
 
-    public void setLeftDoorOpen(boolean isLeftDoorOpen) {
-        this.isLeftDoorOpen = isLeftDoorOpen;
+    public static void setLeftDoorOpen(boolean isLeftDoorOpen) {
+        GameState.isLeftDoorOpen = isLeftDoorOpen;
     }
 
-    public boolean isRightLightOn() {
+    public static boolean isRightLightOn() {
         return isRightLightOn;
     }
 
-    public void setRightLightOn(boolean isRightLightOn) {
-        this.isRightLightOn = isRightLightOn;
+    public static void setRightLightOn(boolean isRightLightOn) {
+        GameState.isRightLightOn = isRightLightOn;
     }
 
-    public boolean isLeftLightOn() {
+    public static boolean isControlShocked() {
+        return isControlShocked;
+    }
+
+    public static void setControlShocked(boolean isControlShocked) {
+        GameState.isControlShocked = isControlShocked;
+    }
+
+    public static boolean isLeftLightOn() {
         return isLeftLightOn;
     }
 
-    public void setLeftLightOn(boolean isLeftLightOn) {
-        this.isLeftLightOn = isLeftLightOn;
+    public static void setLeftLightOn(boolean isLeftLightOn) {
+        GameState.isLeftLightOn = isLeftLightOn;
     }
 
-    public boolean isGameOver() {
+    public static boolean isGameOver() {
         return isGameOver;
     }
 
-    public void setGameOver(boolean isGameOver) {
-        this.isGameOver = isGameOver;
+    public static void setGameOver(boolean isGameOver) {
+        GameState.isGameOver = isGameOver;
     }
 
-    public boolean isNightSurvived() {
+    public static boolean isNightSurvived() {
         return isNightSurvived;
     }
 
-    public void setNightSurvived(boolean isNightSurvived) {
-        this.isNightSurvived = isNightSurvived;
+    public static void setNightSurvived(boolean isNightSurvived) {
+        GameState.isNightSurvived = isNightSurvived;
     }
 
-    public int getCurrentLevel() {
+    public static int getCurrentLevel() {
         return currentLevel;
     }
 
-    public void setCurrentLevel(int currentLevel) {
-        this.currentLevel = currentLevel;
+    public static void setCurrentLevel(int currentLevel) {
+        GameState.currentLevel = currentLevel;
+    }
+
+    public static void reset() {
+        GameState.isRightDoorOpen = false;
+        GameState.isLeftDoorOpen = false;
+        GameState.isRightLightOn = false;
+        GameState.isLeftLightOn = false;
+        GameState.isControlShocked = false;
+        GameState.isGameOver = false;
+        GameState.isNightSurvived = false;
     }
 }

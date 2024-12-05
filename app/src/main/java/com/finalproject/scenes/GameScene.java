@@ -14,12 +14,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 import com.finalproject.app.GameClient;
+import com.finalproject.core.Time;
 
 public class GameScene implements Scene {
-    private JFrame window;
-    private GameClient client;
+    // private JFrame window;
+    // private GameClient client;
     private JPanel gamePanel;
     private JLabel time;
+    private Time timeThread;
     private JButton computerButton;
     private JButton rightDoorButton;
     private JButton leftDoorButton;
@@ -39,8 +41,6 @@ public class GameScene implements Scene {
     private int antivirusButtonX = 100;
 
     public GameScene(GameClient client, JFrame window, ActionListener controller) {
-        this.client = client;
-        this.window = window;
 
         gamePanel = new JPanel() {
             @Override
@@ -73,6 +73,9 @@ public class GameScene implements Scene {
         time = new JLabel("Time: 0");
         time.setBounds(100, 0, 100, 50);
         gamePanel.add(time);
+        timeThread = new Time(time, client);
+        Thread thread1 = new Thread(timeThread);
+        thread1.start();   
 
         computerButton = new JButton("Computer");
         computerButton.setActionCommand("Computer");

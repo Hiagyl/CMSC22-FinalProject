@@ -10,7 +10,7 @@ public class Time implements Runnable{
     private JLabel label;
     private GameClient client;
 
-    public Time(int time, JLabel label, GameClient client) {
+    public Time(JLabel label, GameClient client) {
         this.time = 0;
         this.label = label;
         this.label.setText("12:00 AM");
@@ -28,9 +28,10 @@ public class Time implements Runnable{
                 } else {
                     client.setScene(new SurvivedScene());
                 }
-                
+
                 Thread.sleep(1000);
                 time++;
+                System.out.println(time);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -14,7 +14,6 @@ import com.finalproject.core.GameState;
 
 public class MainMenuScene implements Scene{
     private GameClient client;
-    private GameState state;
     private JFrame window;
     private JPanel menuPanel;
     private JPanel westPanel;
@@ -25,14 +24,15 @@ public class MainMenuScene implements Scene{
     private JButton exitButton;
     private ActionListener controller;
 
-    public MainMenuScene(GameClient client, JFrame window, ActionListener controller, GameState state) {
+
+    public MainMenuScene(GameClient client, JFrame window, ActionListener controller) {
         this.client = client;
         this.window = window;
         this.controller = controller;
-        this.state = state;
         menuPanel = new GamePanel(new BorderLayout(), true);
         westPanel = new GamePanel(new BorderLayout(), true);
         buttonsPanel = new GamePanel();
+        
 
         title = new JLabel("Nightshift");
         //TODO: ADD LOGO INSTEAD OF TEXT
@@ -40,12 +40,15 @@ public class MainMenuScene implements Scene{
 
         startButton = new JButton("Start");
         startButton.addActionListener(e -> startGame());
+        startButton.setFocusable(false);
 
         continueButton = new JButton("Continue");
         continueButton.addActionListener(e -> continueGame());
+        continueButton.setFocusable(false);
 
         exitButton = new JButton("Exit");
         exitButton.addActionListener(e -> exitGame());
+        exitButton.setFocusable(false);
 
         buttonsPanel.add(startButton);
         buttonsPanel.add(continueButton);
@@ -62,11 +65,11 @@ public class MainMenuScene implements Scene{
     } 
 
     private void startGame() {
-        state.setCurrentLevel(1);
-        client.setScene(new NightScene(state.getCurrentLevel()));
-        
-        Timer timer = new Timer(1000, e -> client.setScene(new GameScene(client, window, controller)));
-        
+        GameState.setCurrentLevel(1);
+        client.setScene(new NightScene(GameState.getCurrentLevel()));
+
+        // Thread 
+        Timer timer = new Timer(3000, e -> client.setScene(new GameScene(client, window, controller)));
         timer.setRepeats(false);
         timer.start();
     }

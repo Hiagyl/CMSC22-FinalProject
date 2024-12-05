@@ -21,5 +21,6 @@ public class GamePanel extends JPanel {
         this.setLayout(layout);
         this.setBackground(Color.BLACK);
         this.setEnabled(isEnabled);
+        this.setFocusable(false);
     }
 }
