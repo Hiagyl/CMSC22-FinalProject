@@ -49,3 +49,19 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+tasks.withType(Copy) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+task copyImages(type: Copy) {
+    from 'src/images'
+    into 'build/images'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+allprojects {
+    tasks.withType(Copy) {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
+}

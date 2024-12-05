@@ -1,8 +1,13 @@
 package com.finalproject.models;
 
+import com.finalproject.app.GameClient;
 import com.finalproject.core.GameState;
+import com.finalproject.scenes.GameOverScene;
+
 import java.util.ArrayList;
 import java.util.Random;
+
+import javax.swing.Timer;
 
 public class LeftRobot extends Robot implements Movable {
     private boolean running;
@@ -35,6 +40,7 @@ public class LeftRobot extends Robot implements Movable {
     }
 
     public void attack() {
+        System.out.println("Left robot is attacking...");
         try {
             // Pause for 6 seconds
             Thread.sleep(6000);
@@ -47,6 +53,11 @@ public class LeftRobot extends Robot implements Movable {
             // Set the game state to game over
             GameState.setGameOver(true);
             System.out.println("Game Over: Left door was open during attack.");
+            getClient().setScene(new GameOverScene());
+            Timer timer = new Timer(3000, e -> System.exit(0));
+                    timer.start();
+        } else {
+            this.setCurrentPath(0);
         }
     }
 
@@ -54,7 +65,6 @@ public class LeftRobot extends Robot implements Movable {
     public void startThread() {
         new Thread(() -> {
             while (running) {
-
                 System.out.println("Left robot is transferring rooms...");
                 try {
                     Thread.sleep(5000); // Wait for 5 seconds

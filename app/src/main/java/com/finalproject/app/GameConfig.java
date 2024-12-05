@@ -41,6 +41,9 @@ public class GameConfig {
 
         GameClient client = new GameClient(gameWindow, controller, leftRobot, rightRobot, centerRobot);
 
+        leftRobot.setClient(client);
+        rightRobot.setClient(client);
+        centerRobot.setClient(client);
         controller.setGameClient(client);
 
     }

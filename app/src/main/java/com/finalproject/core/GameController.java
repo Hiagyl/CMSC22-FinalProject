@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.finalproject.app.GameClient;
 import com.finalproject.models.Robot;
-import com.finalproject.scenes.AntivirusScene;
 import com.finalproject.scenes.ComputerScene;
 import com.finalproject.scenes.GameScene;
 
@@ -36,20 +35,24 @@ public class GameController implements ActionListener {
 
                 break;
             case "Right Door":
-                System.out.println("Right Door");
-
+                GameState.setRightDoorOpen();
+                System.out.println("Right door is " + GameState.isRightDoorOpen());
                 break;
             case "Left Door":
-                System.out.println("Left Door");
+                GameState.setLeftDoorOpen();
+                System.out.println("Left door is " + GameState.isLeftDoorOpen());
                 break;
             case "Right Light":
-                System.out.println("Right Light");
+                GameState.setRightLightOn();
+                System.out.println("Right light is " + GameState.isRightLightOn());
                 break;
             case "Left Light":
-                System.out.println("Left Light");
+                GameState.setLeftLightOn();
+                System.out.println("Left light is " + GameState.isLeftLightOn());
                 break;
             case "Antivirus":
-                client.setScene(new AntivirusScene());
+                GameState.setControlShocked();
+                System.out.println("Control is " + GameState.isControlShocked());
                 break;
             default:
                 break;

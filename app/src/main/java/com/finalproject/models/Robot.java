@@ -2,10 +2,13 @@ package com.finalproject.models;
 
 import java.util.ArrayList;
 
+import com.finalproject.app.GameClient;
+
 public abstract class Robot {
     private ArrayList<String> path;
     private int currentPath;
     private int level;
+    private GameClient client;
 
     public Robot(ArrayList<String> path, int level) {
         this.path = path;
@@ -15,6 +18,14 @@ public abstract class Robot {
 
     public Robot(int level) {
         this(null, level);
+    }
+
+    public void setClient(GameClient client) {
+        this.client = client;
+    }
+    
+    public GameClient getClient() {
+        return client;
     }
     
     public String getPath(int n){
@@ -34,6 +45,9 @@ public abstract class Robot {
     }
     
     public abstract void startThread();
+
     public abstract void attack();
+
+    public abstract void stop();
     
 }

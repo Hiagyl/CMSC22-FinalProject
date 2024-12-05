@@ -14,9 +14,9 @@ public class NightScene implements Scene {
     private JPanel nightPanel;
     private JLabel label;
 
-    public NightScene(int night) {
+    public NightScene() {
         this.nightPanel = new GamePanel();
-        this.label = new JLabel("Night " + night);
+        this.label = new JLabel("Night Shift");
 
         label.setFont(new Font("Arial", Font.BOLD, 200));
         label.setHorizontalAlignment(JLabel.CENTER);

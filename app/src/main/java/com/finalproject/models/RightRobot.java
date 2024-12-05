@@ -3,7 +3,11 @@ package com.finalproject.models;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.Timer;
+
+import com.finalproject.app.GameClient;
 import com.finalproject.core.GameState;
+import com.finalproject.scenes.GameOverScene;
 
 public class RightRobot extends Robot implements Movable {
     private boolean running;
@@ -37,6 +41,7 @@ public class RightRobot extends Robot implements Movable {
 
     @Override
     public void attack() {
+        System.out.println("Right robot is attacking...");
         try {
             // Pause for 6 seconds
             Thread.sleep(6000);
@@ -49,6 +54,11 @@ public class RightRobot extends Robot implements Movable {
             // Set the game state to game over
             GameState.setGameOver(true);
             System.out.println("Game Over: Right door was open during attack.");
+            getClient().setScene(new GameOverScene());
+            Timer timer = new Timer(3000, e -> System.exit(0));
+                    timer.start();
+        } else {
+            this.setCurrentPath(0);
         }
     }
 

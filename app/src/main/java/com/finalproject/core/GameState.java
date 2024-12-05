@@ -1,9 +1,11 @@
 package com.finalproject.core;
 
 public class GameState {
+
+
     private static int currentLevel;
-    private static boolean isRightDoorOpen;
-    private static boolean isLeftDoorOpen;
+    private static boolean isRightDoorOpen = true;
+    private static boolean isLeftDoorOpen = true;
     private static boolean isRightLightOn;
     private static boolean isLeftLightOn;
     private static boolean isControlShocked;
@@ -11,55 +13,55 @@ public class GameState {
     private static boolean isNightSurvived;
 
     // Private constructor to prevent instantiation
-    private GameState(int currentLevel) {
-        GameState.currentLevel = currentLevel;
-        GameState.isRightDoorOpen = false;
-        GameState.isLeftDoorOpen = false;
-        GameState.isRightLightOn = false;
-        GameState.isLeftLightOn = false;
-        GameState.isControlShocked = false;
-        GameState.isGameOver = false;
-        GameState.isNightSurvived = false;
-    }
+    // private GameState(int currentLevel) {
+    //     GameState.currentLevel = currentLevel;
+    //     GameState.isRightDoorOpen = true;
+    //     GameState.isLeftDoorOpen = true;
+    //     GameState.isRightLightOn = false;
+    //     GameState.isLeftLightOn = false;
+    //     GameState.isControlShocked = false;
+    //     GameState.isGameOver = false;
+    //     GameState.isNightSurvived = false;
+    // }
 
     public static boolean isRightDoorOpen() {
         return isRightDoorOpen;
     }
 
-    public static void setRightDoorOpen(boolean isRightDoorOpen) {
-        GameState.isRightDoorOpen = isRightDoorOpen;
+    public static void setRightDoorOpen() {
+        GameState.isRightDoorOpen = !GameState.isRightDoorOpen;
     }
 
     public static boolean isLeftDoorOpen() {
         return isLeftDoorOpen;
     }
 
-    public static void setLeftDoorOpen(boolean isLeftDoorOpen) {
-        GameState.isLeftDoorOpen = isLeftDoorOpen;
+    public static void setLeftDoorOpen() {
+        GameState.isLeftDoorOpen = !GameState.isLeftDoorOpen;
     }
 
     public static boolean isRightLightOn() {
         return isRightLightOn;
     }
 
-    public static void setRightLightOn(boolean isRightLightOn) {
-        GameState.isRightLightOn = isRightLightOn;
-    }
-
-    public static boolean isControlShocked() {
-        return isControlShocked;
-    }
-
-    public static void setControlShocked(boolean isControlShocked) {
-        GameState.isControlShocked = isControlShocked;
+    public static void setRightLightOn() {
+        GameState.isRightLightOn = !GameState.isRightLightOn;
     }
 
     public static boolean isLeftLightOn() {
         return isLeftLightOn;
     }
 
-    public static void setLeftLightOn(boolean isLeftLightOn) {
-        GameState.isLeftLightOn = isLeftLightOn;
+    public static void setLeftLightOn() {
+        GameState.isLeftLightOn = !GameState.isLeftLightOn;
+    }
+
+    public static boolean isControlShocked() {
+        return isControlShocked;
+    }
+
+    public static void setControlShocked() {
+        GameState.isControlShocked = !GameState.isControlShocked;
     }
 
     public static boolean isGameOver() {
@@ -87,8 +89,8 @@ public class GameState {
     }
 
     public static void reset() {
-        GameState.isRightDoorOpen = false;
-        GameState.isLeftDoorOpen = false;
+        GameState.isRightDoorOpen = true;
+        GameState.isLeftDoorOpen = true;
         GameState.isRightLightOn = false;
         GameState.isLeftLightOn = false;
         GameState.isControlShocked = false;

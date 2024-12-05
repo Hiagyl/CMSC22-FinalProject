@@ -28,7 +28,7 @@ public class MainMenuScene implements Scene{
     private JPanel buttonsPanel;
     private JLabel title;
     private JButton startButton;
-    private JButton continueButton;
+    // private JButton continueButton;
     private JButton exitButton;
     private GameController controller;
     private Robot leftRobot;
@@ -63,9 +63,9 @@ public class MainMenuScene implements Scene{
         startButton.addActionListener(e -> startGame());
         startButton.setFocusable(false);
 
-        continueButton = createButton("Continue");
-        continueButton.addActionListener(e -> continueGame());
-        continueButton.setFocusable(false);
+        // continueButton = createButton("Continue");
+        // continueButton.addActionListener(e -> continueGame());
+        // continueButton.setFocusable(false);
 
         exitButton = createButton("Exit");
         exitButton.addActionListener(e -> exitGame());
@@ -73,8 +73,8 @@ public class MainMenuScene implements Scene{
 
         buttonsPanel.add(startButton);
         buttonsPanel.add(Box.createVerticalStrut(20));
-        buttonsPanel.add(continueButton);
-        buttonsPanel.add(Box.createVerticalStrut(20));
+        // buttonsPanel.add(continueButton);
+        // buttonsPanel.add(Box.createVerticalStrut(20));
         buttonsPanel.add(exitButton);
 
         menuPanel.add(title, BorderLayout.NORTH);
@@ -101,18 +101,18 @@ public class MainMenuScene implements Scene{
 
     private void startGame() {
         GameState.setCurrentLevel(1);
-        client.setScene(new NightScene(GameState.getCurrentLevel()));
+        client.setScene(new NightScene());
 
         // Thread 
-        Timer timer = new Timer(3000, e -> client.setScene(new GameScene(client, window, controller, leftRobot, rightRobot, centerRobot)));
+        Timer timer = new Timer(3000, e -> client.setScene(new GameScene(client, window, controller, leftRobot, rightRobot, centerRobot, this)));
         timer.setRepeats(false);
         timer.start();
     }
     
-    private void continueGame() {
+    // private void continueGame() {
     
-        //TODO: Add function that updates the night, ai level, etc
-    }
+    //     //TODO: Add function that updates the night, ai level, etc
+    // }
 
     private void exitGame() {
         System.exit(0);

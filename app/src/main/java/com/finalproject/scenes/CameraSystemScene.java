@@ -27,7 +27,6 @@ public class CameraSystemScene implements Scene {
     public CameraSystemScene(GameClient client, Robot leftRobot, Robot rightRobot, Robot centerRobot, GameScene gameScene) {
         this.client = client;
         this.gameScene = gameScene;
-
         cameraPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -93,6 +92,7 @@ public class CameraSystemScene implements Scene {
         } else if (((CenterRobot) centerRobot).getAngerLevel() == 3) {
 
         } else {
+
         }
 
         cameraPanel.repaint();
@@ -100,7 +100,9 @@ public class CameraSystemScene implements Scene {
     
     public void openCamera3() {
         if (rightRobot.getCurrentPath() == 0) {
+
         } else {
+
         }
         cameraPanel.repaint();
     }

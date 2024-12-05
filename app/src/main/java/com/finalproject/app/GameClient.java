@@ -9,17 +9,24 @@ import com.finalproject.scenes.MainMenuScene;
 public class GameClient {
     private JFrame frame;
     private Scene currentScene;
+    private Robot leftRobot;
+    private Robot rightRobot;
+    private Robot centerRobot;
     
     // private ActionListener controller;
 
     public GameClient(JFrame frame, ActionListener controller, Robot leftRobot, Robot rightRobot, Robot centerRobot) {
         // Set up the main game window
         this.frame = frame;
+        this.leftRobot = leftRobot;
+        this.rightRobot = rightRobot;
+        this.centerRobot = centerRobot;
 
         // Initialize the first scene (e.g., MenuScene)
         setScene(new MainMenuScene(this, frame, controller, leftRobot, rightRobot, centerRobot));
         frame.setVisible(true);
     }
+    
 
     // public void setController(ActionListener controller) {
     //     this.controller = controller;

@@ -1,6 +1,10 @@
 package com.finalproject.models;
 
+import javax.swing.Timer;
+
+import com.finalproject.app.GameClient;
 import com.finalproject.core.GameState;
+import com.finalproject.scenes.GameOverScene;
 
 public class CenterRobot extends Robot {
     private int angerLevel;
@@ -30,6 +34,7 @@ public class CenterRobot extends Robot {
                 }
 
                 if (angerLevel == 4) {
+                    System.out.println("Center robot is attacking...");
                     attack();
                 }
             }
@@ -50,6 +55,9 @@ public class CenterRobot extends Robot {
             // Set the game state to game over
             GameState.setGameOver(true);
             System.out.println("Game Over: Controlled shock was not activated.");
+            getClient().setScene(new GameOverScene());
+            Timer timer = new Timer(3000, e -> System.exit(0));
+                    timer.start();
         } else {
             // Reset anger level to 1
             angerLevel = 1;

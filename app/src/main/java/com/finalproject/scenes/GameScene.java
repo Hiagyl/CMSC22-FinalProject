@@ -14,6 +14,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 import com.finalproject.app.GameClient;
+import com.finalproject.core.Battery;
 import com.finalproject.core.GameController;
 import com.finalproject.core.Time;
 import com.finalproject.models.Robot;
@@ -21,14 +22,21 @@ import com.finalproject.models.Robot;
 public class GameScene implements Scene {
     private JPanel gamePanel;
     private JLabel time;
+    private MainMenuScene menu;
+    private JLabel battery;
     private Time timeThread;
+    private Battery batteryThread;
     private JButton computerButton;
     private JButton rightDoorButton;
     private JButton leftDoorButton;
     private JButton rightLightButton;
     private JButton leftLightButton;
-    private JButton antivirusButton;
+    private JButton shockButton;
     private Image backgroundImage;
+    private Robot leftRobot;
+    private Robot rightRobot;
+    private Robot centerRobot;
+
     private int backgroundX; // Horizontal offset for the background
     private int scrollSpeed = 20; // Speed of scrolling
 
@@ -38,10 +46,11 @@ public class GameScene implements Scene {
     private int leftDoorButtonX = 100;
     private int rightLightButtonX = 100;
     private int leftLightButtonX = 100;
-    private int antivirusButtonX = 100;
+    private int shockButtonX = 100;
 
     public GameScene(GameClient client, JFrame window, GameController controller, Robot leftRobot, Robot rightRobot,
-            Robot centerRobot) {
+            Robot centerRobot, MainMenuScene menu) {
+        this.menu = menu;
 
         controller.setGameScene(this);
         gamePanel = new JPanel() {
@@ -75,14 +84,23 @@ public class GameScene implements Scene {
         time = new JLabel("Time: 0");
         time.setBounds(100, 0, 100, 50);
         gamePanel.add(time);
-        timeThread = new Time(time, client);
+        timeThread = new Time(time, client, menu, this);
         Thread thread1 = new Thread(timeThread);
         thread1.start();
         
-        
-        leftRobot.startThread();
-        rightRobot.startThread();
-        centerRobot.startThread();
+        battery = new JLabel("Battery: 100%");
+        battery.setBounds(200, 0, 100, 50);
+        gamePanel.add(battery);
+        batteryThread = Battery.getInstance(battery);
+        Thread thread2 = new Thread(batteryThread);
+        thread2.start();
+        this.leftRobot = leftRobot;
+        this.rightRobot = rightRobot;
+        this.centerRobot = centerRobot;
+
+        this.leftRobot.startThread();
+        this.rightRobot.startThread();
+        this.centerRobot.startThread();
 
         computerButton = new JButton("Computer");
         computerButton.setActionCommand("Computer");
@@ -119,12 +137,12 @@ public class GameScene implements Scene {
         leftLightButton.addActionListener(controller);
         gamePanel.add(leftLightButton);
 
-        antivirusButton = new JButton("Antivirus");
-        antivirusButton.setActionCommand("Antivirus");
-        antivirusButton.setPreferredSize(new Dimension(100, 50));
-        antivirusButton.setBounds(antivirusButtonX, 600, 100, 50);
-        antivirusButton.addActionListener(controller);
-        gamePanel.add(antivirusButton);
+        shockButton = new JButton("Shock");
+        shockButton.setActionCommand("Shock");
+        shockButton.setPreferredSize(new Dimension(100, 50));
+        shockButton.setBounds(shockButtonX, 600, 100, 50);
+        shockButton.addActionListener(controller);
+        gamePanel.add(shockButton);
 
         gamePanel.setLayout(null);
         gamePanel.setVisible(true);
@@ -181,6 +199,15 @@ public class GameScene implements Scene {
         leftDoorButton.setBounds(leftDoorButtonX + backgroundX, 300, 100, 50);
         rightLightButton.setBounds(rightLightButtonX + backgroundX, 400, 100, 50);
         leftLightButton.setBounds(leftLightButtonX + backgroundX, 500, 100, 50);
-        antivirusButton.setBounds(antivirusButtonX + backgroundX, 600, 100, 50);
+        shockButton.setBounds(shockButtonX + backgroundX, 600, 100, 50);
     }
+
+    public void stopAllThreads() {
+        timeThread.stop();
+        batteryThread.stop();
+        leftRobot.stop();
+        rightRobot.stop();
+        centerRobot.stop();
+    }
+    
 }

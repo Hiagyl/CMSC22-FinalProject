@@ -14,7 +14,7 @@ public class ComputerScene implements Scene {
     private GameScene gameScene;
     private JPanel computerPanel;
     private JButton cameraSystem;
-    private JButton terminal;
+    // private JButton terminal;
     private JButton exitButton;
     private Robot leftRobot;
     private Robot rightRobot;
@@ -33,11 +33,11 @@ public class ComputerScene implements Scene {
         cameraSystem.setBounds(100, 100, 100, 50);
         cameraSystem.addActionListener(e -> openCamera());
         
-        this.terminal = new JButton("Terminal");
-        terminal.setActionCommand("Terminal");
-        terminal.setPreferredSize(new Dimension(100, 50));
-        terminal.setBounds(100, 200, 100, 50);
-        terminal.addActionListener(e -> openTerminal());
+        // this.terminal = new JButton("Terminal");
+        // terminal.setActionCommand("Terminal");
+        // terminal.setPreferredSize(new Dimension(100, 50));
+        // terminal.setBounds(100, 200, 100, 50);
+        // terminal.addActionListener(e -> openTerminal());
 
         this.exitButton = new JButton("Exit");
         exitButton.setActionCommand("Exit");
@@ -49,7 +49,7 @@ public class ComputerScene implements Scene {
         // //TODO: Add exit button
         
         computerPanel.add(cameraSystem);
-        computerPanel.add(terminal);
+        // computerPanel.add(terminal);
         computerPanel.add(exitButton);
 
     }
@@ -62,10 +62,10 @@ public class ComputerScene implements Scene {
         client.setScene(new CameraSystemScene(client, leftRobot, rightRobot, centerRobot, gameScene));
     }
 
-    public void openTerminal() {
-        // client.setScene(new TerminalScene());
+    // public void openTerminal() {
+    //     // client.setScene(new TerminalScene());
 
-    }
+    // }
 
     public void exitComputer() {
         client.setScene(gameScene);
