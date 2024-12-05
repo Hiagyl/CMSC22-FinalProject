@@ -43,7 +43,7 @@ public class GameScene implements Scene {
     // Store initial button positions
     private int computerButtonX = 800;
     private int rightDoorButtonX = 1300;
-    private int leftDoorButtonX = 100;
+    private int leftDoorButtonX = 0;
     // private int rightLightButtonX = 100;
     // private int leftLightButtonX = 100;
     private int shockButtonX = 600;
@@ -104,22 +104,22 @@ public class GameScene implements Scene {
 
         computerButton = new JButton("Computer");
         computerButton.setActionCommand("Computer");
-        computerButton.setPreferredSize(new Dimension(100, 50));
-        computerButton.setBounds(computerButtonX, 600, 100, 50);
+        computerButton.setPreferredSize(new Dimension(200, 50));
+        computerButton.setBounds(computerButtonX, 600, 200, 50);
         computerButton.addActionListener(controller);
         gamePanel.add(computerButton);
 
-        rightDoorButton = new JButton("Right Door");
+        rightDoorButton = new JButton("Door Open");
         rightDoorButton.setActionCommand("Right Door");
-        rightDoorButton.setPreferredSize(new Dimension(100, 50));
-        rightDoorButton.setBounds(rightDoorButtonX, 50, 100, 50);
+        rightDoorButton.setPreferredSize(new Dimension(200, 50));
+        rightDoorButton.setBounds(rightDoorButtonX, 50, 200, 50);
         rightDoorButton.addActionListener(controller);
         gamePanel.add(rightDoorButton);
 
-        leftDoorButton = new JButton("Left Door");
+        leftDoorButton = new JButton("Door Open");
         leftDoorButton.setActionCommand("Left Door");
-        leftDoorButton.setPreferredSize(new Dimension(100, 50));
-        leftDoorButton.setBounds(leftDoorButtonX, 50, 100, 50);
+        leftDoorButton.setPreferredSize(new Dimension(200, 50));
+        leftDoorButton.setBounds(leftDoorButtonX, 50, 200, 50);
         leftDoorButton.addActionListener(controller);
         gamePanel.add(leftDoorButton);
 
@@ -137,10 +137,10 @@ public class GameScene implements Scene {
         // leftLightButton.addActionListener(controller);
         // gamePanel.add(leftLightButton);
 
-        shockButton = new JButton("Shock");
+        shockButton = new JButton("Shock Deactivated");
         shockButton.setActionCommand("Shock");
-        shockButton.setPreferredSize(new Dimension(100, 50));
-        shockButton.setBounds(shockButtonX, 600, 100, 50);
+        shockButton.setPreferredSize(new Dimension(200, 50));
+        shockButton.setBounds(shockButtonX, 600, 200, 50);
         shockButton.addActionListener(controller);
         gamePanel.add(shockButton);
 
@@ -194,10 +194,10 @@ public class GameScene implements Scene {
     }
 
     private void updateButtonPositions() {
-        computerButton.setBounds(computerButtonX + backgroundX, 600, 100, 50);
-        rightDoorButton.setBounds(rightDoorButtonX + backgroundX, 50, 100, 50);
-        leftDoorButton.setBounds(leftDoorButtonX + backgroundX, 50, 100, 50);
-        shockButton.setBounds(shockButtonX + backgroundX, 600, 100, 50);
+        computerButton.setBounds(computerButtonX + backgroundX, 600, 200, 50);
+        rightDoorButton.setBounds(rightDoorButtonX + backgroundX, 50, 200, 50);
+        leftDoorButton.setBounds(leftDoorButtonX + backgroundX, 50, 200, 50);
+        shockButton.setBounds(shockButtonX + backgroundX, 600, 200, 50);
     }
 
     public void stopAllThreads() {

@@ -31,7 +31,7 @@ public class ComputerScene implements Scene {
         this.centerRobot = centerRobot;
         
         this.computerPanel = new GamePanel();
-        this.cameraSystem = new JButton("Camera System");
+        this.cameraSystem = new JButton("Camera");
         cameraSystem.setActionCommand("Camera System");
         cameraSystem.setPreferredSize(new Dimension(100, 50));
         cameraSystem.setBounds(100, 100, 100, 50);
