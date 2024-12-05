@@ -1,9 +1,9 @@
 package com.finalproject.scenes;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -12,7 +12,7 @@ import com.finalproject.core.GamePanel;
 
 public class MainMenuScene implements Scene{
     private GameClient client;
-    private JFrame window;
+    // private JFrame window;
     private JPanel menuPanel;
     private JPanel westPanel;
     private JPanel buttonsPanel;
@@ -20,10 +20,12 @@ public class MainMenuScene implements Scene{
     private JButton startButton;
     private JButton continueButton;
     private JButton exitButton;
+    private ActionListener controller;
 
-    public MainMenuScene(GameClient client, JFrame window) {
+    public MainMenuScene(GameClient client, ActionListener controller) {
         this.client = client;
-        this.window = window;
+        // this.window = window;
+        this.controller = controller;
         menuPanel = new GamePanel(new BorderLayout(), true);
         westPanel = new GamePanel(new BorderLayout(), true);
         buttonsPanel = new GamePanel();
@@ -58,10 +60,8 @@ public class MainMenuScene implements Scene{
     private void startGame() {
         client.setScene(new NightScene(1));
         
-        Timer timer = new Timer(3000, e -> client.setScene(new GameScene(client, window)));
+        Timer timer = new Timer(3000, e -> client.setScene(new GameScene(controller)));
         timer.start();
-        
-        // client.setScene(new GameScene(client, window));
     }
     
     private void continueGame() {
