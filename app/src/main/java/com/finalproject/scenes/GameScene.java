@@ -43,7 +43,7 @@ public class GameScene implements Scene {
     // Store initial button positions
     private int computerButtonX = 100;
     private int rightDoorButtonX = 100;
-    private int leftDoorButtonX = 100;
+    private int leftDoorButtonX = 200;
     private int rightLightButtonX = 100;
     private int leftLightButtonX = 100;
     private int shockButtonX = 100;
@@ -123,19 +123,19 @@ public class GameScene implements Scene {
         leftDoorButton.addActionListener(controller);
         gamePanel.add(leftDoorButton);
 
-        rightLightButton = new JButton("Right Light");
-        rightLightButton.setActionCommand("Right Light");
-        rightLightButton.setPreferredSize(new Dimension(100, 50));
-        rightLightButton.setBounds(rightLightButtonX, 400, 100, 50);
-        rightLightButton.addActionListener(controller);
-        gamePanel.add(rightLightButton);
+        // rightLightButton = new JButton("Right Light");
+        // rightLightButton.setActionCommand("Right Light");
+        // rightLightButton.setPreferredSize(new Dimension(100, 50));
+        // rightLightButton.setBounds(rightLightButtonX, 400, 100, 50);
+        // rightLightButton.addActionListener(controller);
+        // gamePanel.add(rightLightButton);
 
-        leftLightButton = new JButton("Left Light");
-        leftLightButton.setActionCommand("Left Light");
-        leftLightButton.setPreferredSize(new Dimension(100, 50));
-        leftLightButton.setBounds(leftLightButtonX, 500, 100, 50);
-        leftLightButton.addActionListener(controller);
-        gamePanel.add(leftLightButton);
+        // leftLightButton = new JButton("Left Light");
+        // leftLightButton.setActionCommand("Left Light");
+        // leftLightButton.setPreferredSize(new Dimension(100, 50));
+        // leftLightButton.setBounds(leftLightButtonX, 500, 100, 50);
+        // leftLightButton.addActionListener(controller);
+        // gamePanel.add(leftLightButton);
 
         shockButton = new JButton("Shock");
         shockButton.setActionCommand("Shock");
@@ -197,8 +197,8 @@ public class GameScene implements Scene {
         computerButton.setBounds(computerButtonX + backgroundX, 100, 100, 50);
         rightDoorButton.setBounds(rightDoorButtonX + backgroundX, 200, 100, 50);
         leftDoorButton.setBounds(leftDoorButtonX + backgroundX, 300, 100, 50);
-        rightLightButton.setBounds(rightLightButtonX + backgroundX, 400, 100, 50);
-        leftLightButton.setBounds(leftLightButtonX + backgroundX, 500, 100, 50);
+        // rightLightButton.setBounds(rightLightButtonX + backgroundX, 400, 100, 50);
+        // leftLightButton.setBounds(leftLightButtonX + backgroundX, 500, 100, 50);
         shockButton.setBounds(shockButtonX + backgroundX, 600, 100, 50);
     }
 

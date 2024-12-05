@@ -14,6 +14,11 @@ public class GameController implements ActionListener {
     private Robot rightRobot;
     private Robot centerRobot;
 
+    public GameController(Robot leftRobot, Robot rightRobot, Robot centerRobot) {
+        this.leftRobot = leftRobot;
+        this.rightRobot = rightRobot;
+        this.centerRobot = centerRobot;
+    }
 
     public void setGameScene(GameScene gameScene) {
         this.gameScene = gameScene;

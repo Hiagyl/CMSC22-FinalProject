@@ -55,7 +55,7 @@ public class Time implements Runnable{
                 }
 
                 Thread.sleep(1000);
-                time += 1;
+                time ++;
                 System.out.println(time);
             } catch (InterruptedException e) {
                 e.printStackTrace();

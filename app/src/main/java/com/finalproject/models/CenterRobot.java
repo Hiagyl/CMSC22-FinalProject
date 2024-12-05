@@ -23,7 +23,7 @@ public class CenterRobot extends Robot {
             while (running) {
                 System.out.println("Center robot is transferring rooms...");
                 try {
-                    Thread.sleep(25000); // Wait for 25 seconds
+                    Thread.sleep(4000); // Wait for 25 seconds
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

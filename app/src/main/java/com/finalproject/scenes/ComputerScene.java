@@ -25,7 +25,10 @@ public class ComputerScene implements Scene {
         this.client = client;
         // this.window = window;
         this.gameScene = gameScene;
-
+        this.leftRobot = leftRobot;
+        this.rightRobot = rightRobot;
+        this.centerRobot = centerRobot;
+        
         this.computerPanel = new GamePanel();
         this.cameraSystem = new JButton("Camera System");
         cameraSystem.setActionCommand("Camera System");

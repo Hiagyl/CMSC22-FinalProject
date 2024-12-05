@@ -20,11 +20,6 @@ public class GameConfig {
         Robot centerRobot;
         Robot rightRobot;
 
-        JFrame gameWindow = new GameWindow(null, (int) screen.getWidth(), (int) screen.getHeight(), true, JFrame.NORMAL,
-                false, true, null);
-
-        GameController controller = new GameController();
-        
         ArrayList<String> path1 = new ArrayList<String>();
         path1.add("Server Room");
         path1.add("Left Hallway");
@@ -38,6 +33,13 @@ public class GameConfig {
         leftRobot = new LeftRobot(path1, 5);
         rightRobot = new RightRobot(path2, 5);
         centerRobot = new CenterRobot(5);
+        
+        JFrame gameWindow = new GameWindow(null, (int) screen.getWidth(), (int) screen.getHeight(), true, JFrame.NORMAL,
+                false, true, null);
+
+        GameController controller = new GameController(leftRobot, rightRobot, centerRobot);
+        
+        
 
         GameClient client = new GameClient(gameWindow, controller, leftRobot, rightRobot, centerRobot);
 

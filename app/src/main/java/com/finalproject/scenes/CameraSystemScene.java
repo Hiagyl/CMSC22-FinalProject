@@ -2,7 +2,9 @@ package com.finalproject.scenes;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.net.URL;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import com.finalproject.app.GameClient;
@@ -27,6 +29,9 @@ public class CameraSystemScene implements Scene {
     public CameraSystemScene(GameClient client, Robot leftRobot, Robot rightRobot, Robot centerRobot, GameScene gameScene) {
         this.client = client;
         this.gameScene = gameScene;
+        this.leftRobot = leftRobot;
+        this.rightRobot = rightRobot;
+        this.centerRobot = centerRobot;
         cameraPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -59,10 +64,10 @@ public class CameraSystemScene implements Scene {
         exitButton.setBounds(50, 550, 100, 50);
         exitButton.addActionListener(e -> exitCamera());
         
-        this.leftRobot = leftRobot;
-        this.rightRobot = rightRobot;
-        this.centerRobot = centerRobot;
-
+        
+        URL url = getClass().getResource("/images/ROBOT4INSERVER1.png");
+        cameraImage = new ImageIcon(url).getImage();
+        // cameraImage = 
         cameraPanel.add(cameraButton1);
         cameraPanel.add(cameraButton2);
         cameraPanel.add(cameraButton3);
@@ -78,21 +83,28 @@ public class CameraSystemScene implements Scene {
     public void openCamera1() {
         if (leftRobot.getCurrentPath() == 0) {
             //TODO: Display camera 1 image
+            URL url = getClass().getResource("/images/ROBOT4INSERVER1.png");
+            cameraImage = new ImageIcon(url).getImage();
         } else {
-
+            URL url = getClass().getResource("/images/SERVERROOM.png");
+            cameraImage = new ImageIcon(url).getImage();
         }
         cameraPanel.repaint();
     }
 
     public void openCamera2() {
         if (((CenterRobot) centerRobot).getAngerLevel() == 1) {
-
+            URL url = getClass().getResource("/images/ROBOT3INPOWER1.png");
+            cameraImage = new ImageIcon(url).getImage();
         } else if (((CenterRobot) centerRobot).getAngerLevel() == 2) {
-
+            URL url = getClass().getResource("/images/ROBOT3INPOWER2.png");
+            cameraImage = new ImageIcon(url).getImage();
         } else if (((CenterRobot) centerRobot).getAngerLevel() == 3) {
-
+            URL url = getClass().getResource("/images/ROBOT3INPOWER3.png");
+            cameraImage = new ImageIcon(url).getImage();
         } else {
-
+            URL url = getClass().getResource("/images/ROBOT3INPOWER4.png");
+            cameraImage = new ImageIcon(url).getImage();
         }
 
         cameraPanel.repaint();
@@ -100,23 +112,33 @@ public class CameraSystemScene implements Scene {
     
     public void openCamera3() {
         if (rightRobot.getCurrentPath() == 0) {
-
+            URL url = getClass().getResource("/images/ROBOT2INSTORAGE2.png");
+            cameraImage = new ImageIcon(url).getImage();
         } else {
-
+            URL url = getClass().getResource("/images/STORAGEROOM.png");
+            cameraImage = new ImageIcon(url).getImage();
         }
         cameraPanel.repaint();
     }
 
     public void openCamera4() {
         if (leftRobot.getCurrentPath() == 1) {
+            URL url = getClass().getResource("/images/ROBOTINHALLWAYleft.png");
+            cameraImage = new ImageIcon(url).getImage();
         } else {
+            URL url = getClass().getResource("/images/CLEARHALLWAYleft.png");
+            cameraImage = new ImageIcon(url).getImage();
         }
         cameraPanel.repaint();
     }
 
     public void openCamera5() {
         if (rightRobot.getCurrentPath() == 1) {
+            URL url = getClass().getResource("/images/ROBOTHALLWAYright.png");
+            cameraImage = new ImageIcon(url).getImage();
         } else {
+            URL url = getClass().getResource("/images/CLEARHALLWAY2.png");
+            cameraImage = new ImageIcon(url).getImage();
         }
         cameraPanel.repaint();
     }
