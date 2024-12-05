@@ -6,15 +6,18 @@ import java.awt.Image;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
+import com.finalproject.app.GameClient;
+
 public class GameScene implements Scene {
-    // private JFrame window;
-    // private GameClient client;
+    private JFrame window;
+    private GameClient client;
     private JPanel gamePanel;
     private JLabel time;
     private JButton computerButton;
@@ -35,9 +38,9 @@ public class GameScene implements Scene {
     private int leftLightButtonX = 100;
     private int antivirusButtonX = 100;
 
-    public GameScene(ActionListener controller) {
-        // this.client = client;
-        // this.window = window;
+    public GameScene(GameClient client, JFrame window, ActionListener controller) {
+        this.client = client;
+        this.window = window;
 
         gamePanel = new JPanel() {
             @Override
@@ -79,30 +82,35 @@ public class GameScene implements Scene {
         gamePanel.add(computerButton);
 
         rightDoorButton = new JButton("Right Door");
+        rightDoorButton.setActionCommand("Right Door");
         rightDoorButton.setPreferredSize(new Dimension(100, 50));
         rightDoorButton.setBounds(rightDoorButtonX, 200, 100, 50);
         rightDoorButton.addActionListener(controller);
         gamePanel.add(rightDoorButton);
 
         leftDoorButton = new JButton("Left Door");
+        leftDoorButton.setActionCommand("Left Door");
         leftDoorButton.setPreferredSize(new Dimension(100, 50));
         leftDoorButton.setBounds(leftDoorButtonX, 300, 100, 50);
         leftDoorButton.addActionListener(controller);
         gamePanel.add(leftDoorButton);
 
         rightLightButton = new JButton("Right Light");
+        rightLightButton.setActionCommand("Right Light");
         rightLightButton.setPreferredSize(new Dimension(100, 50));
         rightLightButton.setBounds(rightLightButtonX, 400, 100, 50);
         rightLightButton.addActionListener(controller);
         gamePanel.add(rightLightButton);
 
         leftLightButton = new JButton("Left Light");
+        leftLightButton.setActionCommand("Left Light");
         leftLightButton.setPreferredSize(new Dimension(100, 50));
         leftLightButton.setBounds(leftLightButtonX, 500, 100, 50);
         leftLightButton.addActionListener(controller);
         gamePanel.add(leftLightButton);
 
         antivirusButton = new JButton("Antivirus");
+        antivirusButton.setActionCommand("Antivirus");
         antivirusButton.setPreferredSize(new Dimension(100, 50));
         antivirusButton.setBounds(antivirusButtonX, 600, 100, 50);
         antivirusButton.addActionListener(controller);
@@ -130,26 +138,31 @@ public class GameScene implements Scene {
         int panelWidth = gamePanel.getWidth();
         int imageWidth = backgroundImage.getWidth(null);
         int maxScrollX = 0; // Left limit (fully aligned to the left)
-        int minScrollX = -(imageWidth - panelWidth);
+        int minScrollX = -(imageWidth - panelWidth); // Right limit (fully aligned to the right)
+
+        int newBackgroundX = backgroundX; // Start with the current backgroundX
 
         if (mouseX < threshold) {
             // Cursor is near the left edge, scroll to the left
-            backgroundX += scrollSpeed;
+            newBackgroundX += scrollSpeed;
         } else if (mouseX > panelWidth - threshold) {
             // Cursor is near the right edge, scroll to the right
-            backgroundX -= scrollSpeed;
-            
+            newBackgroundX -= scrollSpeed;
         }
 
-        // Clamp the backgroundX to prevent scrolling out of bounds
-        // Right limit (fully aligned to the right)
-        backgroundX = Math.max(minScrollX, Math.min(backgroundX, maxScrollX));
+        // Clamp the newBackgroundX to prevent scrolling out of bounds
+        newBackgroundX = Math.max(minScrollX, Math.min(newBackgroundX, maxScrollX));
 
-        // Update button positions based on backgroundX
-        updateButtonPositions();
+        // Update backgroundX only if it has changed
+        if (newBackgroundX != backgroundX) {
+            backgroundX = newBackgroundX;
+            // Update button positions based on backgroundX
+            updateButtonPositions();
+            // Repaint the panel to show the updated background position
+            gamePanel.repaint();
+        }
 
-        // Repaint the panel to show the updated background position
-        gamePanel.repaint();
+        System.out.println("backgroundX: " + backgroundX + " minScrollX: " + minScrollX + " maxScrollX: " + maxScrollX);
     }
 
     private void updateButtonPositions() {

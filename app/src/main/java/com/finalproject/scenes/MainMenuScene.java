@@ -4,15 +4,18 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.finalproject.app.GameClient;
 import com.finalproject.core.GamePanel;
+import com.finalproject.core.GameState;
 
 public class MainMenuScene implements Scene{
     private GameClient client;
-    // private JFrame window;
+    private GameState state;
+    private JFrame window;
     private JPanel menuPanel;
     private JPanel westPanel;
     private JPanel buttonsPanel;
@@ -22,10 +25,11 @@ public class MainMenuScene implements Scene{
     private JButton exitButton;
     private ActionListener controller;
 
-    public MainMenuScene(GameClient client, ActionListener controller) {
+    public MainMenuScene(GameClient client, JFrame window, ActionListener controller, GameState state) {
         this.client = client;
-        // this.window = window;
+        this.window = window;
         this.controller = controller;
+        this.state = state;
         menuPanel = new GamePanel(new BorderLayout(), true);
         westPanel = new GamePanel(new BorderLayout(), true);
         buttonsPanel = new GamePanel();
@@ -58,9 +62,12 @@ public class MainMenuScene implements Scene{
     } 
 
     private void startGame() {
-        client.setScene(new NightScene(1));
+        state.setCurrentLevel(1);
+        client.setScene(new NightScene(state.getCurrentLevel()));
         
-        Timer timer = new Timer(3000, e -> client.setScene(new GameScene(controller)));
+        Timer timer = new Timer(1000, e -> client.setScene(new GameScene(client, window, controller)));
+        
+        timer.setRepeats(false);
         timer.start();
     }
     

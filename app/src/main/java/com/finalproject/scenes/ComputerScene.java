@@ -14,7 +14,9 @@ public class ComputerScene implements Scene {
     public ComputerScene() {
         this.computerPanel = new GamePanel();
         this.label = new JLabel("Computer Scene");
-
+        //TODO: Create a display label for camera and terminal
+        //TODO: Add exit button
+        
         computerPanel.add(label);
     }
     

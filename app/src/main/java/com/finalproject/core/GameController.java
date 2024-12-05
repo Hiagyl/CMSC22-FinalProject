@@ -4,9 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.finalproject.app.GameClient;
+import com.finalproject.scenes.AntivirusScene;
 import com.finalproject.scenes.ComputerScene;
 
-public class Controller implements ActionListener {
+public class GameController implements ActionListener {
     private GameClient client;
 
     public void setGameClient(GameClient client) {
@@ -19,11 +20,15 @@ public class Controller implements ActionListener {
 
         switch (command) {
             case "Computer":
-                //TODO: Add functionalities for ComputerScene
+                System.out.println("Computer");
+
+                // TODO: Add functionalities for ComputerScene
                 client.setScene(new ComputerScene());
+
                 break;
             case "Right Door":
                 System.out.println("Right Door");
+
                 break;
             case "Left Door":
                 System.out.println("Left Door");
@@ -35,7 +40,7 @@ public class Controller implements ActionListener {
                 System.out.println("Left Light");
                 break;
             case "Antivirus":
-                // client.setScene(new AntivirusScene());
+                client.setScene(new AntivirusScene());
                 break;
             default:
                 break;
