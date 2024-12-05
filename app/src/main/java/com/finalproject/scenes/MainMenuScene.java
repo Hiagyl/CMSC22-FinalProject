@@ -1,12 +1,19 @@
 package com.finalproject.scenes;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import com.finalproject.app.GameClient;
 import com.finalproject.core.GameController;
 import com.finalproject.core.GamePanel;
@@ -17,7 +24,7 @@ public class MainMenuScene implements Scene{
     private GameClient client;
     private JFrame window;
     private JPanel menuPanel;
-    private JPanel westPanel;
+    // private JPanel westPanel;
     private JPanel buttonsPanel;
     private JLabel title;
     private JButton startButton;
@@ -39,13 +46,18 @@ public class MainMenuScene implements Scene{
         this.centerRobot = centerRobot;
 
         menuPanel = new GamePanel(new BorderLayout(), true);
-        westPanel = new GamePanel(new BorderLayout(), true);
+        menuPanel.setBackground(Color.BLACK);
+        // westPanel = new GamePanel(new BorderLayout(), true);
         buttonsPanel = new GamePanel();
+        buttonsPanel.setBackground(Color.BLACK);
+        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.Y_AXIS));
+        buttonsPanel.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
         
 
-        title = new JLabel("Nightshift");
-        //TODO: ADD LOGO INSTEAD OF TEXT
-        //TODO: DESIGN MAIN MENU
+        title = new JLabel("Night Shift");
+        title.setFont(new Font("Arial", Font.BOLD, 76));
+        title.setForeground(Color.WHITE);
+        title.setHorizontalAlignment(SwingConstants.LEFT);
 
         startButton = new JButton("Start");
         startButton.addActionListener(e -> startGame());
@@ -60,16 +72,18 @@ public class MainMenuScene implements Scene{
         exitButton.setFocusable(false);
 
         buttonsPanel.add(startButton);
+        buttonsPanel.add(Box.createVerticalStrut(20));
         buttonsPanel.add(continueButton);
+        buttonsPanel.add(Box.createVerticalStrut(20));
         buttonsPanel.add(exitButton);
 
-        westPanel.add(title, BorderLayout.NORTH);
-        westPanel.add(buttonsPanel, BorderLayout.CENTER);
+        menuPanel.add(title, BorderLayout.NORTH);
+        menuPanel.add(buttonsPanel, BorderLayout.CENTER);
 
-        menuPanel.add(westPanel, BorderLayout.WEST);
+        // menuPanel.add(westPanel, BorderLayout.WEST);
 
         buttonsPanel.setVisible(true);
-        westPanel.setVisible(true);
+        // westPanel.setVisible(true);
         menuPanel.setVisible(true);
     } 
 
