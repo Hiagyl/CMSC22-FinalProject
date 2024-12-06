@@ -38,7 +38,8 @@ public class LeftRobot extends Robot implements Movable {
         }
         System.out.println("Left robot moved to path " + getPath(this.getCurrentPath()));
     }
-
+    
+    @Override
     public void attack() {
         System.out.println("Left robot is attacking...");
         try {

@@ -97,6 +97,7 @@ public class GameScene implements Scene {
         batteryThread = Battery.getInstance(battery);
         Thread thread2 = new Thread(batteryThread);
         thread2.start();
+
         this.leftRobot = leftRobot;
         this.rightRobot = rightRobot;
         this.centerRobot = centerRobot;
@@ -203,12 +204,12 @@ public class GameScene implements Scene {
         shockButton.setBounds(shockButtonX + backgroundX, 600, 200, 50);
     }
 
-    public void stopAllThreads() {
-        timeThread.stop();
-        batteryThread.stop();
-        leftRobot.stop();
-        rightRobot.stop();
-        centerRobot.stop();
-    }
+    // public void stopAllThreads() {
+    //     timeThread.stop();
+    //     batteryThread.stop();
+    //     leftRobot.stop();
+    //     rightRobot.stop();
+    //     centerRobot.stop();
+    // }
     
 }

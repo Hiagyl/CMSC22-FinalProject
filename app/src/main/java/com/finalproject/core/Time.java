@@ -62,7 +62,7 @@ public class Time implements Runnable{
         }
     }
     
-    public void stopAllThreads() {
-        gameScene.stopAllThreads();
-    }
+    // public void stopAllThreads() {
+    //     gameScene.stopAllThreads();
+    // }
 }

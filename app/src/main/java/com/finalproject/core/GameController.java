@@ -2,9 +2,7 @@ package com.finalproject.core;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-
 import com.finalproject.app.GameClient;
 import com.finalproject.models.Robot;
 import com.finalproject.scenes.ComputerScene;

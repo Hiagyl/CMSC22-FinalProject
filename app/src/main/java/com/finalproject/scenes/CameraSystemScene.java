@@ -66,8 +66,15 @@ public class CameraSystemScene implements Scene {
         exitButton.addActionListener(e -> exitCamera());
         
         
-        URL url = getClass().getResource("/images/ROBOT4INSERVER1.png");
-        cameraImage = new ImageIcon(url).getImage();
+        if (leftRobot.getCurrentPath() == 0) {
+            // TODO: Display camera 1 image
+            URL url = getClass().getResource("/images/ROBOT4INSERVER1.png");
+            cameraImage = new ImageIcon(url).getImage();
+        } else {
+            URL url = getClass().getResource("/images/SERVERROOM.png");
+            cameraImage = new ImageIcon(url).getImage();
+        }
+        
         // cameraImage = 
         cameraPanel.add(cameraButton1);
         cameraPanel.add(cameraButton2);
